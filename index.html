@@ -52,7 +52,7 @@
         <datalist id="demo">
           <option value="TV"></option>
           <option value="PC"></option>
-          <option value="Labtop"></option>
+          <option value="Screen"></option>
           <option value="Moblie"></option>
         </datalist>
       </div>
@@ -78,8 +78,11 @@
         />
         <label for="productImage">Upload Image</label>
       </div>
-      <button onclick="addProduct()" class="btn btn-info text-white my-3">
+      <button id="addBtn" onclick="addProduct()" class="btn btn-info text-white my-3">
         Add Product
+      </button>
+      <button id="editBtn" onclick="editProduct()" class="btn btn-warning text-white my-3 d-none">
+        Edit Product
       </button>
       <input
         oninput="search()"

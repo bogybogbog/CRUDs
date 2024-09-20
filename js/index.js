@@ -5,6 +5,9 @@ var ProductDescriptionInput = document.getElementById("ProductDescription");
 var productImageInput = document.getElementById("productImage");
 var myRow = document.getElementById("myRow");
 var searchInput = document.getElementById("searchInput");
+var addBtn = document.getElementById("addBtn");
+var editBtn = document.getElementById("editBtn");
+var myIndex;
 var ProductList;
 
 if (localStorage.getItem("products") == null) {
@@ -33,9 +36,8 @@ function addProduct() {
     console.log(ProductList);
     clear();
     display(ProductList);
-  }
-  else{
-    alert('not valid date')
+  } else {
+    alert("not valid data");
   }
 }
 function display(arr) {
@@ -96,7 +98,6 @@ function search() {
   }
   display(searchedList);
 }
-
 function valedate(element) {
   var redex = {
     productName: /^[A-Z][a-z]{2,7}$/,
@@ -117,12 +118,46 @@ function valedate(element) {
     element.classList.remove("is-valid");
     element.nextElementSibling.classList.replace("d-none", "d-block");
   }
-
 }
+function updateProduct(updatedIndex) {
+  console.log(updatedIndex);
+  myIndex = updatedIndex;
+  productNameInput.value = ProductList[updatedIndex].name;
+  productPriceInput.value = ProductList[updatedIndex].price;
+  productCategortInput.value = ProductList[updatedIndex].category;
+  ProductDescriptionInput.value = ProductList[updatedIndex].desc;
+  productNameInput.classList.add("is-valid")
+  productPriceInput.classList.add("is-valid")
+  productCategortInput.classList.add("is-valid")
+  ProductDescriptionInput.classList.add("is-valid")
 
-function updateProduct(updatedIndex) {}
+  addBtn.classList.add("d-none");
+  // editBtn.classList.replace("d-none", "d-block");
+  editBtn.classList.remove("d-none");
+}
+function editProduct() {
+  if (
+    productNameInput.classList.contains("is-valid") &&
+    productPriceInput.classList.contains("is-valid") &&
+    productCategortInput.classList.contains("is-valid") &&
+    ProductDescriptionInput.classList.contains("is-valid")
+  ) {
+    console.log(myIndex);
+    ProductList[myIndex].name = productNameInput.value;
+    ProductList[myIndex].price = productPriceInput.value;
+    ProductList[myIndex].category = ProductDescriptionInput.value;
+    ProductList[myIndex].desc = productCategortInput.value;
+    localStorage.setItem("products", JSON.stringify(ProductList));
+  
+    display(ProductList);
+    addBtn.classList.remove("d-none");
+    // editBtn.classList.replace("d-none", "d-block");
+    editBtn.classList.add("d-none")
+  }
+else alert("not valid data")
+}
 // localStorage.setItem("userName", "ahmed");
-// var x = localStorage.getItem("userName");
+// var x = localStorage.getItem("userName");  
 // console.log(x);
 // localStorage.clear();
 // var x = localStorage.length;
