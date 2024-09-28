@@ -126,10 +126,10 @@ function updateProduct(updatedIndex) {
   productPriceInput.value = ProductList[updatedIndex].price;
   productCategortInput.value = ProductList[updatedIndex].category;
   ProductDescriptionInput.value = ProductList[updatedIndex].desc;
-  productNameInput.classList.add("is-valid")
-  productPriceInput.classList.add("is-valid")
-  productCategortInput.classList.add("is-valid")
-  ProductDescriptionInput.classList.add("is-valid")
+  productNameInput.classList.add("is-valid");
+  productPriceInput.classList.add("is-valid");
+  productCategortInput.classList.add("is-valid");
+  ProductDescriptionInput.classList.add("is-valid");
 
   addBtn.classList.add("d-none");
   // editBtn.classList.replace("d-none", "d-block");
@@ -148,16 +148,15 @@ function editProduct() {
     ProductList[myIndex].category = ProductDescriptionInput.value;
     ProductList[myIndex].desc = productCategortInput.value;
     localStorage.setItem("products", JSON.stringify(ProductList));
-  
+
     display(ProductList);
     addBtn.classList.remove("d-none");
     // editBtn.classList.replace("d-none", "d-block");
-    editBtn.classList.add("d-none")
-  }
-else alert("not valid data")
+    editBtn.classList.add("d-none");
+  } else alert("not valid data");
 }
 // localStorage.setItem("userName", "ahmed");
-// var x = localStorage.getItem("userName");  
+// var x = localStorage.getItem("userName");
 // console.log(x);
 // localStorage.clear();
 // var x = localStorage.length;
